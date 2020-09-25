@@ -6,14 +6,13 @@
   top: 19px;
   border-radius: 5px;
   width: 850px;
-  height: 340px;
+  height: 400px;
   position: relative;
   margin: auto;
 }
 
 .ProfileContent {
-  left: -3px;
-  border: 3px solid black;
+  left: -13px;
   border-radius: 5px;
   border-width: 3px;
   border-style: dashed;
@@ -25,9 +24,13 @@
 }
 
 .SaveButton {
-  left: 360px;
-  top: -15px;
+  left: 350px;
+  top: -25px;
   position: relative;
   margin: auto;
-  padding: 10px;
+  /* padding: 10px; */
+  /* font-size: 25px; */
+  /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
+  /* font: italic small-caps bold 12px/30px Georgia, serif; */
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
 }

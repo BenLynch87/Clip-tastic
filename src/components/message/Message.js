@@ -1,48 +1,88 @@
 import React from "react";
-// import Image from "../../assets/images/ThumbsUp.png";
+// import Image from "../../assets/images/Placeholder_Image.gif";
+// import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import "../message/Message.css";
+import ProfilePic from "../../assets/images/Placeholder_Image.gif";
+import SocialappService from "../../socialappService";
+import Image from "react-bootstrap/Image";
+import { userIsAuthenticated } from "../../redux/HOCs";
 
 class Message extends React.Component {
   constructor(props) {
     super(props);
+    this.api = new SocialappService();
+
     this.state = {
-      likeCount: 0,
+      user: {},
+      date: "",
+      userPic: ProfilePic,
+      likes: this.props.likes.length,
     };
   }
-  LikeFunction() {
-    this.setState({ likeCount: this.state.likeCount + 1 });
-    //return <img =""></img>; //Sometype of image thumbnail
+
+  componentDidMount() {
+    this.api
+      .getUser(this.props.username)
+      .then((response) => this.setState({ user: response.data.user }));
+    const postedAt = new Date(this.props.createdAt);
+    this.setState({ date: postedAt.toUTCString() });
+    // this.api
+    //   .getProfilePic(this.props.username)
+    //   .then((response) => this.setState({ userPic: response.data.message }));
   }
 
-  render() {
-    return (
-      // <div className="Body">
-      <div className="CardBody">
-        <Card style={{ width: "600px" }}>
-          <Card.Body className="Message">
-            <Card.Title> From: {this.props.username}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">
-              {new Date(this.props.createdAt).toDateString}
-              Posted:{" "}
-            </Card.Subtitle>
+  LikeFunction = () => {
+    let messageID = { messageId: this.props.id };
+    this.api
+      .addLike(messageID)
+      .then(this.setState({ likes: this.state.likes++ }));
+  };
 
+  render() {
+    if (this.state.userPic === "User does not have a picture") {
+      this.setState({ userPic: ProfilePic });
+    }
+    return (
+      <div className="CardBody">
+        <Card style={{ width: "575px" }}>
+          <Card.Body className="Message">
+            <Image
+              className="ProfilePic"
+              src={this.state.userPic}
+              alt="Profile Pic"
+            />
+            <div className="ProfileLink">
+              <Link to="/miniProfile">Check Out My Profile</Link>
+            </div>
+            <div className="MemberTitle">
+              <Card.Title> Member: {this.state.user.displayName}</Card.Title>
+            </div>
+            <div className="PostedTitle">
+              <Card.Subtitle className="mb-2 text-muted">
+                this.state.date
+              </Card.Subtitle>
+            </div>
             <Card.Text className="MessageText">{this.props.text}</Card.Text>
-            <footer>
-              {" "}
-              {/* <Card.Link href="#">REPLY</Card.Link> */}
-              <div className="likes">Likes: {this.props.likes.length}</div>{" "}
-              {/* <br></br> */}
+            <Card.Footer>
+              <div className="likes">Likes: {this.state.likes}</div>
+              <div className="LikeButton">
+                <button onClick={this.LikeFunction}>Like</button>
+              </div>
               <button className="LikeButton" onClick={this.LikeFunction}>
-                Like This Post
-              </button>{" "}
-            </footer>
+                LIKE MY POST!
+              </button>
+            </Card.Footer>
           </Card.Body>
         </Card>
       </div>
+<<<<<<< HEAD
       // </div>
+=======
+>>>>>>> master
     );
   }
 }
 
-export default Message;
+export default userIsAuthenticated(Message);
