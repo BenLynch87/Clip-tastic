@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Menu.css";
 import { withAsyncAction } from "../../redux/HOCs";
 import Card from "react-bootstrap/Card";
+import Navigation from "../navigation/Navigation.js";
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -20,20 +21,17 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <div class="card" className="Menu">
-        <div class="card-header">
-          <h1>Clip-tastic! Home of extreme couponing!</h1>
-          {this.props.isAuthenticated && (
-            <div id="menu-links">
-              <Link to="/home">Home</Link>
-              <Link to="/profile">Profile</Link>
-              <Link to="/messagefeed">Message Feed</Link>
-              <Link to="/" onClick={this.handleLogout}>
-                Logout
-              </Link>
-            </div>
-          )}
-        </div>
+      <div className="Menu">
+        <Navigation username={this.state.link} />
+        {this.props.isAuthenticated && (
+          <div id="menu-links">
+            <Link to={this.state.link}>Profile</Link>
+            <Link to="/messagefeed">Message Feed</Link>
+            <Link to="/" onClick={this.handleLogout}>
+              Logout
+            </Link>
+          </div>
+        )}
       </div>
     );
   }
