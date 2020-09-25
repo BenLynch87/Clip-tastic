@@ -77,10 +77,6 @@ class Message extends React.Component {
           </Card.Body>
         </Card>
       </div>
-<<<<<<< HEAD
-      // </div>
-=======
->>>>>>> master
     );
   }
 }
