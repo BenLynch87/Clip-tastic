@@ -65,7 +65,10 @@ class MessageFeed extends React.Component {
     }
     return (
       <div>
-        <SideNavigation />
+        <SideNavigation>
+          <MiniProfile user={this.state.currentUser} />
+        </SideNavigation>
+
         <div className="Body">
           <div className="MessageList">
             <Menu isAuthenticated={this.props.isAuthenticated} />

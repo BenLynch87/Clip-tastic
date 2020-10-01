@@ -18,8 +18,6 @@ function scrollFunction() {
 export default function SideNavigation() {
   return (
     <div>
-      <MiniProfile />
-
       <div class="wrapper">
         <ul class="nav flex-column">
           <li class="nav-item">
