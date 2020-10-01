@@ -1,16 +1,15 @@
 import React from "react";
-import Menu from "../components/menu/Menu";
-import { userIsAuthenticated } from "../redux/HOCs";
-import SocialappService from "../socialappService";
-import Message from "../components/message/Message";
-import Post from "../components/post/Post";
+import Menu from "../menu/Menu.js";
+import { userIsAuthenticated } from "../../redux/HOCs";
+import SocialappService from "../../socialappService.js";
+import Message from "../message/Message.js";
+import Post from "../post/Post.js";
 import Button from "react-bootstrap/Button";
 import Popover from "react-bootstrap/Popover";
 import { OverlayTrigger } from "react-bootstrap";
-import "../pages/MessageFeed.css";
-import MiniProfile from "../components/miniProfile/MiniProfile";
+import MiniProfile from "../miniLogin/MiniLogin.js";
 
-class MessageFeed extends React.Component {
+class SentMessageFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = { messages: [], text: "", currentUser: {} };
@@ -41,45 +40,34 @@ class MessageFeed extends React.Component {
         )
       );
   }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleNewPost = (e) => {
-    e.preventDefault();
-    this.api.postMessage({ text: this.state.text });
-    setTimeout(() => {
-      this.retrieveMessages();
-      document.body.click();
-    }, 1000);
   };
 
   render() {
     if (this.state.messages.length === 0) {
       return (
-        <div className="MessageList">
-          <div className="MessageLoading">Message Feed Is Loading......</div>
+        <div className="SentMessageList">
+          <div className="SentMessageLoading">
+            Sent Message Feed Is Loading......
+          </div>
         </div>
       );
     }
     return (
-      //Single message, create function that just returns the user of specific message
       <div className="Body">
         <MiniProfile user={this.state.currentUser} />
-        <div className="MessageList">
+        <div className="SentMessageList">
           <Menu isAuthenticated={this.props.isAuthenticated} />
-          <div className="MessageHeader">Message Feed</div>
+          <div className="SentMessageHeader">Sent Message Feed</div>
           <br></br>
           <OverlayTrigger
             trigger="click"
             placement="bottom"
             overlay={this.popover}
             rootClose={true}
-          >
-            <Button className="PostButton" variant="dark" size="lg">
-              POST A MESSAGE
-            </Button>
-          </OverlayTrigger>
+          ></OverlayTrigger>
           <div className="TheFeed">
             <ul>
               {this.state.messages.map((messageObject) => {
@@ -93,4 +81,4 @@ class MessageFeed extends React.Component {
   }
 }
 
-export default userIsAuthenticated(MessageFeed);
+export default userIsAuthenticated(SentMessageFeed);
