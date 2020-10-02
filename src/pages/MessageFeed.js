@@ -41,7 +41,6 @@ class MessageFeed extends React.Component {
         )
       );
   }
-
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -64,32 +63,29 @@ class MessageFeed extends React.Component {
       );
     }
     return (
-      <div>
-        <SideNavigation>
-          <MiniProfile user={this.state.currentUser} />
-        </SideNavigation>
-
-        <div className="Body">
-          <div className="MessageList">
-            <Menu isAuthenticated={this.props.isAuthenticated} />
-            <div className="MessageHeader">Message Feed</div>
-            <br></br>
-            <OverlayTrigger
-              trigger="click"
-              placement="bottom"
-              overlay={this.popover}
-            >
-              <Button variant="dark" size="lg">
-                WRITE A POST!
-              </Button>
-            </OverlayTrigger>
-            <div className="TheFeed">
-              <ul>
-                {this.state.messages.map((messageObject) => {
-                  return <Message {...messageObject} />;
-                })}
-              </ul>
-            </div>
+      //Single message, create function that just returns the user of specific message
+      <div className="Body">
+        <MiniProfile user={this.state.currentUser} />
+        <div className="MessageList">
+          <Menu isAuthenticated={this.props.isAuthenticated} />
+          <div className="MessageHeader">Message Feed</div>
+          <br></br>
+          <OverlayTrigger
+            trigger="click"
+            placement="bottom"
+            overlay={this.popover}
+            rootClose={true}
+          >
+            <Button className="PostButton" variant="dark" size="lg">
+              POST A MESSAGE
+            </Button>
+          </OverlayTrigger>
+          <div className="TheFeed">
+            <ul>
+              {this.state.messages.map((messageObject) => {
+                return <Message {...messageObject} />;
+              })}
+            </ul>
           </div>
         </div>
       </div>
