@@ -7,11 +7,10 @@ import SentMessagesFeed from "../components/sentMessageFeed/SentMessageFeed.js";
 
 class Profile extends React.Component {
   render() {
+    //<SentMessageFeed />
     return (
       <div>
-        <div className="SentMessagesSideBar">
-          <SentMessageFeed />
-        </div>
+        <div className="SentMessagesSideBar"></div>
         <div className="Body">
           <div className="Profile">
             <Menu isAuthenticated={this.props.isAuthenticated} />
