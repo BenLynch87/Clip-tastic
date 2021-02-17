@@ -20,12 +20,24 @@ class Menu extends React.Component {
 
   render() {
     return (
-      <div className="Menu">
+      <div className="MenuBody">
         {this.props.isAuthenticated && (
+<<<<<<< HEAD
           <div id="menu-links">
             <Navigation username={this.state.link} />
             <Link to="/" onClick={this.handleLogout}>
               LOGOUT
+=======
+          <div className="MenuLinks">
+            <Link to={this.state.link} title="Go To Profile">
+              Profile
+            </Link>
+            <Link to="/messagefeed" title="Go To Message Feed">
+              Message Feed
+            </Link>
+            <Link to="/" onClick={this.handleLogout} title="Logout">
+              Logout
+>>>>>>> ef1763fada37c3a21728993d3e5415691bbaa36b
             </Link>
           </div>
         )}

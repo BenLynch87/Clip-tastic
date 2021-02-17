@@ -46,45 +46,65 @@ class RegistrationForm extends React.Component {
     }
 
     return (
-      <div className="Body">
+      <div className="RegistrationFormBody">
         {popup}
-        <div className="RegistrationForm">
-          <form id="registration-form" onSubmit={this.handleRegistration}>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              name="username"
-              autoFocus
-              required
-              onChange={this.handleChange}
-            />
-            <br></br>
-            <div>- - - - - - - - - - - - - - - - - - - - -</div>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              required
-              onChange={this.handleChange}
-            />
-            <br></br>
-            <div>- - - - - - - - - - - - - - - - - - - - -</div>
-            <label htmlFor="displayName">Display Name</label>
-            <input
-              type="text"
-              name="displayName"
-              required
-              onChange={this.handleChange}
-            />
-            <br></br>
-            <div>- - - - - - - - - - - - - - - - - - - - -</div>
-            <div className="RegisterButton">
-              <input type="submit" value="Submit" disabled={loading} />
+        <form onSubmit={this.handleRegistration}>
+          <div className="RegUserBox">
+            <div className="RegUserHeader">
+              <label htmlFor="username">Username</label>
             </div>
-          </form>
-          {loading && <Spinner name="circle" color="blue" />}
-          {error && <p style={{ color: "red" }}>{error.message}</p>}
-        </div>
+            <div className="RegUserInput">
+              <input
+                type="text"
+                name="username"
+                placeholder="Enter Username"
+                autoFocus
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div className="RegPassBox">
+            <div className="RegPassHeader">
+              <label htmlFor="password">Password</label>
+            </div>
+            <div className="RegPassInput">
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div className="RegDisplayBox">
+            <div className="RegDisplayHeader">
+              <label htmlFor="displayName">Display Name</label>
+            </div>
+            <div className="RegDisplayInput">
+              <input
+                type="text"
+                name="displayName"
+                placeholder="Enter Display Name"
+                required
+                onChange={this.handleChange}
+              />
+            </div>
+          </div>
+          <div className="RegButtonBox">
+            <div className="RegButton">
+              <input
+                type="submit"
+                value=""
+                title="Register"
+                disabled={loading}
+              ></input>
+            </div>
+          </div>
+        </form>
+        {loading && <Spinner name="circle" color="blue" />}
+        {error && <p style={{ color: "red" }}>{error.message}</p>}
       </div>
     );
   }
