@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Menu.css";
 import { withAsyncAction } from "../../redux/HOCs";
-
+import Navigation from "../navigation/Navigation.js";
 class Menu extends React.Component {
   constructor(props) {
     super(props);
@@ -23,8 +23,7 @@ class Menu extends React.Component {
       <div className="Menu">
         {this.props.isAuthenticated && (
           <div id="menu-links">
-            <Link to={this.state.link}>PROFILE</Link>
-            <Link to="/messagefeed">MESSAGE FEED</Link>
+            <Navigation username={this.state.link} />
             <Link to="/" onClick={this.handleLogout}>
               LOGOUT
             </Link>

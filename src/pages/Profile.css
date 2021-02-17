@@ -27,6 +27,7 @@
   color: black;
   text-align: center;
 }
+
 .SentMessagesSideBar {
   display: flex;
   flex-direction: row;

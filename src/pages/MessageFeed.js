@@ -9,7 +9,7 @@ import Popover from "react-bootstrap/Popover";
 import { OverlayTrigger } from "react-bootstrap";
 import "../pages/MessageFeed.css";
 import MiniProfile from "../components/miniProfile/MiniProfile";
-
+import SideNavigation from "../components/sidenavigation/SideNavigation.js";
 class MessageFeed extends React.Component {
   constructor(props) {
     super(props);
