@@ -1,84 +1,112 @@
 import React from "react";
-// import Image from "../../assets/images/Placeholder_Image.gif";
-// import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
 import "../message/Message.css";
-import ProfilePic from "../../assets/images/Placeholder_Image.gif";
+import ProfilePic from "../../assets/images/Placeholder_Image.png";
 import SocialappService from "../../socialappService";
-import Image from "react-bootstrap/Image";
-import { userIsAuthenticated } from "../../redux/HOCs";
+
+const styles = {
+  paperContainer: {
+    maxwidth: 125,
+    maxheight: 125,
+    backgroundImage: `url(${"static/src/img/main.jpg"})`,
+  },
+};
 
 class Message extends React.Component {
   constructor(props) {
     super(props);
+
     this.api = new SocialappService();
 
     this.state = {
-      user: {},
-      date: "",
-      userPic: ProfilePic,
       likes: this.props.likes.length,
+      user: this.props.username,
+      displayName: "loading",
+      profilePic: ProfilePic,
     };
   }
-
   componentDidMount() {
-    this.api
-      .getUser(this.props.username)
-      .then((response) => this.setState({ user: response.data.user }));
-    const postedAt = new Date(this.props.createdAt);
-    this.setState({ date: postedAt.toUTCString() });
-    // this.api
-    //   .getProfilePic(this.props.username)
-    //   .then((response) => this.setState({ userPic: response.data.message }));
+    this.updateUser();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.username !== this.props.username) {
+      this.updateUser();
+    }
+  }
+
+  updateUser() {
+    this.api.getUser(this.props.username).then((response) =>
+      this.setState({
+        user: response.data.user.username,
+        displayName: response.data.user.displayName,
+        profilePic: response.data.user.pictureLocation,
+      })
+    );
   }
 
   LikeFunction = () => {
     let messageID = { messageId: this.props.id };
     this.api
       .addLike(messageID)
-      .then(this.setState({ likes: this.state.likes++ }));
+      .then(this.setState({ likes: this.state.likes + 1 }));
   };
 
   render() {
-    if (this.state.userPic === "User does not have a picture") {
-      this.setState({ userPic: ProfilePic });
+    let picture = ProfilePic;
+    if (this.state.profilePic !== null) {
+      picture = `https://socialapp-api.herokuapp.com${this.state.profilePic}`;
     }
+
+    let date = new Date(this.props.createdAt);
+    date = date.toUTCString();
+
     return (
-      <div className="CardBody">
-        <Card style={{ width: "575px" }}>
-          <Card.Body className="Message">
-            <Image
-              className="ProfilePic"
-              src={this.state.userPic}
-              alt="Profile Pic"
-            />
-            <div className="ProfileLink">
-              <Link to="/miniProfile">Check Out My Profile</Link>
-            </div>
-            <div className="MemberTitle">
-              <Card.Title> Member: {this.state.user.displayName}</Card.Title>
-            </div>
-            <div className="PostedTitle">
-              <Card.Subtitle className="mb-2 text-muted">
-                this.state.date
-              </Card.Subtitle>
-            </div>
-            <Card.Text className="MessageText">{this.props.text}</Card.Text>
-            <Card.Footer>
-              <div className="likes">Likes: {this.state.likes}</div>
-              <div className="LikeButton">
-                <button onClick={this.LikeFunction}>Like</button>
+      <div className="MessageBody">
+        <div className="MessageCardBody">
+          <Card
+            className="MessageCard"
+            style={{ width: "613px", height: "220px" }}
+          >
+            <Card.Body className="Message">
+              <div className="MessProfPicBox">
+                <img
+                  className="MessProfilePic"
+                  src={picture}
+                  alt="Profile Pic"
+                  style={styles.paperContainer}
+                />
               </div>
-              <button className="LikeButton" onClick={this.LikeFunction}>
-                LIKE MY POST!
-              </button>
-            </Card.Footer>
-          </Card.Body>
-        </Card>
+              <div className="PosterInfoBox">
+                <Card.Title className="MessMemberTitle">
+                  Posted By: {this.props.username}
+                </Card.Title>
+                <Card.Subtitle className="TimeStamp">
+                  Member Since: {date}
+                </Card.Subtitle>
+              </div>
+              <Card.Text className="MessageTextBox">
+                {this.props.text}
+              </Card.Text>
+              <div className="MessThumbsUpNumberBox">
+                <div className="MessThumbsUpNumber">
+                  Thumbs Up: {this.state.likes}
+                </div>
+              </div>
+              <div className="MessThumbsUpButtonBox">
+                <button
+                  className="MessThumbsUpButton"
+                  onClick={this.LikeFunction}
+                >
+                  Thumbs Up!
+                </button>
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
       </div>
     );
   }
 }
 
-export default userIsAuthenticated(Message);
+export default Message;

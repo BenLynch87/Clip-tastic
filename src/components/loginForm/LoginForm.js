@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
   handleLogin = (e) => {
     e.preventDefault();
     localStorage.setItem("user", this.state.username);
+    localStorage.setItem("password", this.state.password);
     this.props.login(this.state);
   };
 
@@ -25,41 +26,53 @@ class LoginForm extends React.Component {
   render() {
     const { loading, error } = this.props;
     return (
-      <div className="Body">
-        <div className="LoginForm">
-          <form id="login-form" onSubmit={this.handleLogin}>
-            <label htmlFor="username">Username</label>
-            <div className="UsernameInput">
-              <input
-                type="text"
-                name="username"
-                value={this.props.username}
-                autoFocus
-                required
-                onChange={this.handleChange}
-              />
+      <div className="LogFormBody">
+        <div className="LogForm">
+          <form onSubmit={this.handleLogin}>
+            <div className="LogUserBox">
+              <div className="LogUserHeader">
+                <label htmlFor="username">Username</label>
+              </div>
+              <div className="LogUserInput">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Enter Username"
+                  value={this.props.username}
+                  autoFocus
+                  required
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-            <br></br>
-            <div>- - - - - - - - - - - - - - - - - - - - - - - - -</div>
-            <label htmlFor="password">Password</label>
-            <div className="PasswordInput">
-              <input
-                type="password"
-                name="password"
-                value={this.props.password}
-                required
-                onChange={this.handleChange}
-              />
+            <div className="LogPassBox">
+              <div className="LogPassHeader">
+                <label htmlFor="password">Password</label>
+              </div>
+              <div className="LogPassInput">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Enter Password"
+                  value={this.props.password}
+                  required
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-            <br></br>
-            <div>- - - - - - - - - - - - - - - - - - - - - - - - -</div>
-            <div className="LoginButton">
-              <input type="submit" value="Enter" disabled={loading} />
+            <div className="LogEnterButton">
+              <input
+                type="submit"
+                value=""
+                title="Enter"
+                onClick={this.handleLogin}
+                disabled={loading}
+              ></input>
             </div>
           </form>
-          {loading && <Spinner name="circle" color="red" />}
-          {error && <p style={{ color: "red" }}>{error.message}</p>}
         </div>
+        {loading && <Spinner name="circle" color="red" />}
+        {error && <p style={{ color: "red" }}>{error.message}</p>}
       </div>
     );
   }

@@ -2,61 +2,128 @@
   box-sizing: border-box;
 }
 
-.Body {
-  padding: 10px;
-  width: 850px;
+.LoginFormBody {
   position: relative;
-  margin: auto;
-  border: 3px solid black;
   border-radius: 5px;
   border-width: 3px;
   border-style: dashed;
 }
 
-#login-form {
+.LogUserBox {
+  background-image: url(../../assets/images/Coupon_Background_Dark.png);
+  margin: 10px;
   position: relative;
-  margin: auto;
-  top: 25px;
-  text-align: center;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font: italic small-caps bold 12px/30px Georgia, serif;
-  font-size: 25px;
+  border: #d2be1a;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
+  color: black;
+  font: italic small-caps bold 30px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
   text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
-  width: 400px;
-  color: #b80c12;
 }
 
-input[type="button"],
-input[type="submit"] {
-  background-color: #343a40;
-  border: 3px solid #b80c12;
-  border-radius: 2px;
-  color: white;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font: italic small-caps bold 12px/30px Georgia, serif;
-  font-size: 25px;
-  padding: 10px;
-  cursor: pointer;
-}
-
-.LoginButton {
+.LogUserHeader {
   position: relative;
-  margin: auto;
-  width: 100px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
 }
 
-.LoginForm {
-  background-color: black;
+.LogUserBox input[type="text"] {
+  width: 350px;
+  margin: 10px;
   position: relative;
-  margin: auto;
-  border: 3px solid #b80c12;
+  margin: 10px;
+  border: #d2be1a;
   border-radius: 5px;
   border-width: 3px;
   border-style: dashed;
-  width: 475px;
-  height: 375px;
+  background: none;
+  background-image: url(../../assets/images/Clear_Red.png);
+  color: black;
+  text-align: left;
+  font: italic small-caps bold 25px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+}
+
+.LogUserBox input[type="text"]:hover {
+  border: black;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
+  color: #d2be1a;
+  -webkit-text-stroke: 0.5px black;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+}
+
+.LogPassBox {
+  background-image: url(../../assets/images/Coupon_Background_Dark.png);
+  margin: 10px;
+  position: relative;
+  border: #d2be1a;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
+  text-align: center;
+  color: black;
+  font: italic small-caps bold 30px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+}
+
+.LogPassHeader {
+  position: relative;
+  text-align: center;
+}
+
+.LogPassBox input[type="password"] {
+  width: 350px;
+  margin: 10px;
+  position: relative;
+  margin: 10px;
+  border: #d2be1a;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
+  background: none;
+  background-image: url(../../assets/images/Clear_Red.png);
+  text-align: left;
+  color: black;
+  font: italic small-caps bold 25px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+}
+
+.LogPassBox input[type="password"]:hover {
+  background-image: url(../../assets/images/Clear_Red_Dark.png);
+  border: black;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
+  color: #d2be1a;
+  -webkit-text-stroke: 0.5px black;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+}
+
+.LogEnterButton {
+  margin: 10px;
+  position: relative;
+}
+
+.LogEnterButton input[type="submit"] {
+  padding: 10px;
+  left: 125px;
+  top: 5px;
+  position: relative;
+  background: none;
+  background-image: url(../../assets/images/Enter_Button.png);
+  background-repeat: no-repeat;
+  border: none;
+  width: 150px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.LogEnterButton input[type="submit"]:hover {
+  background-image: url(../../assets/images/Enter_Button_Hover.gif);
 }

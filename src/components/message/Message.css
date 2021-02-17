@@ -2,109 +2,165 @@
   box-sizing: border-box;
 }
 
-.Body {
+.MessageBody {
+  width: 606px;
+  background-image: url(../../assets/images/Clear_Red.png);
+  border: #d2be1a;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
   position: relative;
-  margin: auto;
-  font-size: 25px;
+  margin: 10px;
 }
 
 .Message {
-  width: 627px;
-  height: 240px;
-  border: 3px solid #b80c12;
-  border-radius: 5px;
-  border-width: 3px;
-  border-style: dashed;
-  background-color: black;
-  text-align: left;
-  padding: 10px;
-}
-
-.CardBody {
-  border: 3px solid black;
-  border-radius: 5px;
-  border-width: 3px;
-  border-style: dashed;
-  padding: 10px;
-  width: 654px;
+  width: 606px;
   position: relative;
   margin: auto;
-  margin: 10px;
-  left: 32px;
 }
 
-.MessageText {
+.MessageCardBody {
+  width: 606px;
+  position: relative;
+  margin: auto;
+  height: 218px;
+}
+
+.MessageCard {
+  background: none;
+  position: relative;
+  margin: auto;
+}
+
+.MessageTextBox {
   position: relative;
   margin: auto;
   padding: 5px;
-  border: 2px solid white;
+  border: #d2be1a;
   border-radius: 5px;
-  border-width: 2px;
-  background-image: url(../../assets/images/Coupon_Background_Dark.png);
-  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+  border-width: 3px;
+  border-style: dashed;
+  background-image: url(../../assets/images/Coupon_Background_Lighter.png);
   color: black;
-  width: 468px;
-  height: 185px;
-  top: -130px;
-  left: 68px;
+  font: italic small-caps bold 25px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+  width: 444px;
+  height: 139px;
+  top: -147px;
+  left: 66px;
+  overflow: auto;
 }
 
-.LikeButton {
+.MessThumbsUpButtonBox {
   position: relative;
-  margin: auto;
+  top: -224px;
+  left: -11px;
+}
+
+.MessThumbsUpButton {
   width: 125px;
-  top: -191px;
-  background-color: #202326;
-  border: 2px solid #b80c12;
+  height: 53px;
+  border: #d2be1a;
   border-radius: 5px;
-  border-width: 2px;
+  border-width: 3px;
   border-style: dashed;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 18px;
-  color: white;
-  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
-  text-align: center;
-  cursor: pointer;
-}
-
-.ProfileLink a {
-  text-decoration: none;
+  background: none;
+  background-image: url(../../assets/images/Thumgs_Up.png);
+  background-repeat: no-repeat;
   position: relative;
   margin: auto;
-  float: left;
-  top: 26px;
-  left: 4px;
-  font-size: 15px;
-  color: #b80c12;
-  text-decoration: underline;
-  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+  font: italic small-caps bold 22px/40px Impact;
+  -webkit-text-stroke: rgba(0, 0, 0, 0);
+  color: rgba(0, 0, 0, 0);
   cursor: pointer;
 }
 
-.ProfilePic {
-  border: 2px solid #b80c12;
+.MessThumbsUpButton:hover {
+  border: white;
   border-radius: 5px;
-  border-width: 2px;
+  border-width: 3px;
   border-style: dashed;
-  top: 25px;
+  background-image: url(../../assets/images/Thumgs_Up.png);
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+  -webkit-text-stroke: 0.25px black;
+  color: white;
+}
+
+.MessProfPicBox {
+  background-image: url(../../assets/images/Coupon_Background_Dark.png);
+  border: #d2be1a;
+  border-radius: 5px;
+  border-width: 3px;
+  border-style: dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  top: -8px;
+  left: -11px;
   width: 125px;
   height: 125px;
-  position: relative;
-  margin: auto;
+  max-width: 125px;
+  max-height: 125px;
+  overflow: hidden;
 }
 
-.MemberTitle {
-  top: -130px;
-  left: -112px;
+.MessProfilePic {
   position: relative;
   margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  height: 125px;
+  max-width: 125px;
+  max-height: 125px;
+  overflow: hidden;
+}
+
+.PosterInfoBox {
+  position: relative;
+  margin: 10px;
+  top: -145px;
+  left: 125px;
+}
+
+.MessMemberTitle {
+  /* top: -144px;
+  left: 126px; */
+  position: relative;
+  margin: auto;
+  color: black;
+  font: italic small-caps bold 20px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
   text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
 }
 
-.LikesNumber {
+.TimeStamp {
+  left: 60px;
   position: relative;
   margin: auto;
-  top: -348px;
-  left: 537px;
+  color: black;
+  font: italic small-caps bold 17px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
   text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+}
+
+.MessThumbsUpNumberBox {
+  color: black;
+  font: italic small-caps bold 20px Impact;
+  -webkit-text-stroke: 0.5px #d2be1a;
+  text-shadow: -1px -1px 1px rgb(151, 148, 148), 1px 1px 1px #000;
+  position: relative;
+  margin: auto;
+  left: 455px;
+  top: -341px;
+  /* width: 150px; */
+  z-index: 1;
+}
+
+.MessThumbsUpNumber {
+  position: relative;
 }
